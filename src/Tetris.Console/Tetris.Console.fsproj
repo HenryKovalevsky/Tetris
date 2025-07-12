@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tetris.Engine\Tetris.Engine.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Console.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
