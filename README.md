@@ -18,11 +18,12 @@ ___
 
 **Todo:**
 
-- add tests;
 - add levels system;
 - use Thuja for TUI implementation;
 - implement wall kicks;
 - extend scoring system;
+- add ghost piece;
 - implement Super Rotation System;
 - add T-Spins pattern recognition;
+- implement AI bot;
 - ...

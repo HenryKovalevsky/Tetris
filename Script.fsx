@@ -6,28 +6,14 @@
 #load @"Scoring.fs"
 #load @"GameState.fs"
 
+#I @"tests\Tetris.Engine.Tests"
+
+#load @"Helpers.fs"
+
 open System
 
 open Tetris.Engine
-
-// helpers
-let boardToArray2D (board : Board) =
-  let array = Array2D.create board.Height board.Width ' '
-
-  board.Field
-  |> Map.toSeq
-  |> Seq.iter (fun (pos, shape) -> Array2D.set array pos.Y pos.X (shape.ToString().[0]))
-
-  array
-
-let tetriminoToArray2D boardSize (tetrimino : Tetrimino) =
-  let width, height = boardSize
-  let array = Array2D.create height width ' '
-
-  tetrimino.Blocks
-  |> Seq.iter (fun pos -> Array2D.set array pos.Y pos.X (tetrimino.Shape.ToString().[0]))
-
-  array
+open Tetris.Engine.Tests.Helpers
 
 // setup
 let boardSize = 10, 20
@@ -39,7 +25,7 @@ let update command state = GameState.updateWith randomizer command state
 // program
 let mutable state = init ()
 
-tetriminoToArray2D boardSize state.Current |> printfn "%A"
+Tetrimino.toArray2D boardSize state.Current |> printfn "%A"
 
 state <- update MoveDown state
 state <- update MoveLeft state
@@ -48,5 +34,5 @@ state <- update RotateLeft state
 state <- update RotateRight state
 state <- update HardDrop state
 
-boardToArray2D state.Board |> printfn "%A"
-tetriminoToArray2D boardSize state.Current |> printfn "%A"
+Board.toArray2D state.Board |> printfn "%A"
+Tetrimino.toArray2D boardSize state.Current |> printfn "%A"
